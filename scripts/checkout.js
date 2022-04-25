@@ -3,7 +3,7 @@
 // Else show "Booking successfull!" and adjust the wallet amount in real time
 
 // document.getElementById("wallet").innerHTML="";
-var wallet =JSON.parse(localStorage.getItem("wallet"));
+var wallet =JSON.parse(localStorage.getItem("amount"));
 if(wallet==null)
 {
     document.getElementById("wallet").append(0);
@@ -37,20 +37,21 @@ displaydata(movies);
 
 function confirm()
 {
-    let seats = document.getElementById("number_of_seats").value;
-let price = 100*seats;
+    var wallet =JSON.parse(localStorage.getItem("amount"));
+    let seats = Number(document.getElementById("number_of_seats").value);
+    let price = 100*seats;
 
     if(wallet==null || wallet<price)
     {
         alert("Insufficient Balance!");
     }
     else{
-      
+        document.getElementById("wallet").innerHTML="";
         alert("Booking successful!");
         new_price = wallet-price;
-        localStorage.setItem("wallet",JSON.stringify(new_price));
-        new_wallet = JSON.parse(localStorage.getItem("wallet"));
-        document.getElementById("wallet").innerHTML="";
+        localStorage.setItem("amount",JSON.stringify(new_price));
+        new_wallet = JSON.parse(localStorage.getItem("amount"));
+        
         document.getElementById("wallet").append(new_wallet);
     }
 

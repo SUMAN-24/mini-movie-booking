@@ -2,7 +2,7 @@
 // On clicking book now store the selected movie in localstorage as key "movie"
 // so that you can retrive it on checkout.html page
 
-var wallet =JSON.parse(localStorage.getItem("wallet"));
+var wallet =JSON.parse(localStorage.getItem("amount"));
 if(wallet==null)
 {
     document.getElementById("wallet").append(0);
